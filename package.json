@@ -1,0 +1,39 @@
+{
+  "name": "stylint-loader",
+  "version": "0.1.0",
+  "description": "stylint loader (for webpack)",
+  "keywords": [
+    "stylint",
+    "lint",
+    "loader",
+    "webpack",
+    "stylus",
+    "linter"
+  ],
+  "homepage": "https://github.com/guerrero/stylint-loader#readme",
+  "bugs": {
+    "url": "https://github.com/guerrero/stylint-loader/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Alex Guerrero",
+    "email": "alexguerrero1092@gmail.com",
+    "url": "https://github.com/guerrero"
+  },
+  "main": "index.js",
+  "repository": "guerrero/stylint-loader",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "stylint": "^1.0.9"
+  },
+  "dependencies": {
+    "loader-utils": "^0.2.11",
+    "object-assign": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^1.0.0"
+  }
+}
