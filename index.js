@@ -22,6 +22,7 @@ function lint(source, config, webpack, callback) {
             result = [].concat(this.cache.errs, this.cache.warnings);
             message = '\n' + result.join('\n\n') + '\n' + this.cache.msg;
             emitter = this.cache.errs.length > 0 ? webpack.emitError : webpack.emitWarning;
+            this.resetOnChange();
 
             if (emitter) {
               emitter(message);
