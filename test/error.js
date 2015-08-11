@@ -18,7 +18,6 @@ describe('stylint loader', function() {
     };
 
     webpack(assign({}, globalConf, localConfig), function(err, stats) {
-      console.log(stats.toString());
       assert.equal(err, null);
       assert.equal(stats.hasErrors(), true);
       done();

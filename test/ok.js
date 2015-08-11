@@ -6,17 +6,22 @@ var assign = require('object-assign');
 var globalConf = require('./utils/conf');
 
 describe('stylint loader', function() {
-  it('should return warning if file contains stylint warning', function(done) {
+  it('shouldn\'t return error or warning if file it\'s ok', function(done) {
     var localConfig = {
-      entry: './test/fixtures/warning.js',
+      entry: './test/fixtures/ok.js',
       stylint: {
-        semicolons: 'never'
+        semicolons: {
+          expect: 'never',
+          error: true
+        },
+        colons: 'never'
       }
     };
 
     webpack(assign({}, globalConf, localConfig), function(err, stats) {
       assert.equal(err, null);
-      assert.equal(stats.hasWarnings(), true);
+      assert.equal(stats.hasErrors(), false);
+      assert.equal(stats.hasWarnings(), false);
       done();
     });
   });
