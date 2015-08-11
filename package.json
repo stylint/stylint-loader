@@ -24,7 +24,7 @@
   "repository": "guerrero/stylint-loader",
   "scripts": {
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint && mocha test/*.js"
   },
   "peerDependencies": {
     "stylint": "^1.0.9"
@@ -34,6 +34,12 @@
     "object-assign": "^3.0.0"
   },
   "devDependencies": {
-    "eslint": "^1.0.0"
+    "chai": "^3.2.0",
+    "css-loader": "^0.15.6",
+    "eslint": "^1.0.0",
+    "mocha": "^2.2.5",
+    "style-loader": "^0.12.3",
+    "stylus-loader": "^1.2.1",
+    "webpack": "^1.11.0"
   }
 }
