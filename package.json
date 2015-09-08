@@ -27,7 +27,7 @@
     "test": "npm run lint && mocha test/*.js"
   },
   "peerDependencies": {
-    "stylint": "^1.0.9"
+    "stylint": "^1.2.2"
   },
   "dependencies": {
     "loader-utils": "^0.2.11",
