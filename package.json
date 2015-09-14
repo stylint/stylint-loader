@@ -20,11 +20,10 @@
     "email": "alexguerrero1092@gmail.com",
     "url": "https://github.com/guerrero"
   },
-  "main": "index.js",
   "repository": "guerrero/stylint-loader",
   "scripts": {
     "lint": "eslint .",
-    "test": "npm run lint && mocha test/*.js"
+    "test": "npm run lint && mocha"
   },
   "peerDependencies": {
     "stylint": "^1.2.2"
