@@ -1,4 +1,4 @@
-# stylint-loader
+# stylint-loader [![Build Status](https://travis-ci.org/guerrero/stylint-loader.svg?branch=master)](https://travis-ci.org/guerrero/stylint-loader)
 
 > stylint loader for [webpack](http://webpack.github.io/)
 
