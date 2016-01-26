@@ -1,11 +1,10 @@
 'use strict';
 
 var stylint = require('stylint');
-var assign = require('object-assign');
 var loaderUtils = require('loader-utils');
 
-function lint(source, config, webpack, callback) {
-  stylint(source, config)
+function lint(source, webpackConfig, queryConfig, webpack, callback) {
+  stylint(source, queryConfig)
     .methods({
       read: function() {
         this.cache.files = [webpack.resource];
@@ -44,7 +43,11 @@ function lint(source, config, webpack, callback) {
         }
       }
     })
-    .create();
+    .create({}, {
+      watch: webpackConfig.watch,
+      config: webpackConfig.config,
+      strict: webpackConfig.strict
+    });
 
   if (callback) {
     callback(null, source);
@@ -52,10 +55,8 @@ function lint(source, config, webpack, callback) {
 }
 
 module.exports = function(source) {
-  var defaultConfig = {};
-  var globalConfig = this.options.stylint || {};
-  var loaderConfig = loaderUtils.parseQuery(this.query);
-  var config = assign({}, defaultConfig, globalConfig, loaderConfig);
+  var webpackConfig = this.options.stylint || {};
+  var queryConfig = this.query ? loaderUtils.parseQuery(this.query) : null;
   var callback = this.async();
 
   if (this.cacheable) {
@@ -63,12 +64,12 @@ module.exports = function(source) {
   }
 
   if (!callback) {
-    lint(source, config, this);
+    lint(source, webpackConfig, queryConfig, this);
     return source;
   }
 
   try {
-    lint(source, config, this, callback);
+    lint(source, webpackConfig, queryConfig, this, callback);
   } catch (error) {
     callback(error);
   }

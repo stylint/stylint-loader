@@ -1,0 +1,7 @@
+{
+    "semicolons": {
+        "expect": "never",
+        "error": true
+    },
+    "colons": "never"
+}

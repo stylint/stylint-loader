@@ -6,14 +6,32 @@ var assign = require('object-assign');
 var globalConf = require('./utils/conf');
 
 describe('stylint loader', function() {
-  it('should return error if file contains stylint error', function(done) {
+  it('should return error if file contains stylint error based on given .stylintrc', function(done) {
     var localConfig = {
       entry: './test/fixtures/error.js',
       stylint: {
-        semicolons: {
-          expect: 'never',
-          error: true
-        }
+        config: './test/config/.stylintrc_error'
+      }
+    };
+
+    webpack(assign({}, globalConf, localConfig), function(err, stats) {
+      assert.equal(err, null);
+      assert.equal(stats.hasErrors(), true);
+      done();
+    });
+  });
+
+  it('should return error if file contains stylint error based on passed url params', function(done) {
+    var localConfig = {
+      entry: './test/fixtures/error.js',
+      module: {
+        preLoaders: [
+          {
+            test: /\.styl$/,
+            loader: '../../index?{ semicolons: { expect: "never", error: true} }',
+            exclude: /node_modules/
+          }
+        ]
       }
     };
 
