@@ -2,11 +2,21 @@
 
 > stylint loader for [webpack](http://webpack.github.io/)
 
+
 ## Install
+
+Install the stylint `peerDependency` manually (only if you're using npm v3 or earlier)
+
+```bash
+npm install --save-dev stylint
+```
+
+Install `stylint-loader` package
 
 ```bash
 npm install stylint-loader
 ```
+
 
 ## Usage
 
@@ -50,6 +60,7 @@ module.exports = {
 }
 ```
 
+
 ### Options
 
 You can pass [stylint options](https://github.com/rossPatton/stylint#options) directly by
@@ -81,5 +92,6 @@ module.exports = {
 ```
 
 **Note that you can use both method in order to benefit from global & specific options**
+
 
 ## [License](LICENSE)
