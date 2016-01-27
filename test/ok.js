@@ -6,15 +6,11 @@ var assign = require('object-assign');
 var globalConf = require('./utils/conf');
 
 describe('stylint loader', function() {
-  it('shouldn\'t return error or warning if file it\'s ok', function(done) {
+  it('shouldn\'t return error or warning if file it\'s ok based on given .stylintrc', function(done) {
     var localConfig = {
       entry: './test/fixtures/ok.js',
       stylint: {
-        semicolons: {
-          expect: 'never',
-          error: true
-        },
-        colons: 'never'
+        config: './test/config/.stylintrc_ok'
       }
     };
 
