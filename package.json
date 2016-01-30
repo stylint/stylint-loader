@@ -20,6 +20,9 @@
     "email": "alexguerrero1092@gmail.com",
     "url": "https://github.com/guerrero"
   },
+  "files": [
+    "index.js"
+  ],
   "repository": "guerrero/stylint-loader",
   "scripts": {
     "lint": "eslint .",
