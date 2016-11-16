@@ -2,6 +2,8 @@
 
 > stylint loader for [webpack](http://webpack.github.io/)
 
+**UNMAINTAINED** Look at the [issue #9](https://github.com/guerrero/stylint-loader/issues/9)
+
 
 ## Install
 
