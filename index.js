@@ -56,7 +56,8 @@ function lint(source, webpackConfig, queryConfig, webpack, callback) {
 
 module.exports = function(source) {
   var webpackConfig = this.options.stylint || {};
-  var queryConfig = this.query ? loaderUtils.parseQuery(this.query) : null;
+  var queryConfig = loaderUtils.getOptions(this) || null;
+
   var callback = this.async();
 
   if (this.cacheable) {

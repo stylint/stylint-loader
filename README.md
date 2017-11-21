@@ -2,9 +2,6 @@
 
 > stylint loader for [webpack](http://webpack.github.io/)
 
-**UNMAINTAINED** Look at the [issue #9](https://github.com/guerrero/stylint-loader/issues/9)
-
-
 ## Install
 
 Install the stylint `peerDependency` manually (only if you're using npm v3 or earlier)
@@ -16,9 +13,12 @@ npm install --save-dev stylint
 Install `stylint-loader` package
 
 ```bash
-npm install stylint-loader
-```
+// webpack 1
+npm install stylint-loader@1.x
 
+// webpack 3+
+npm install stylint-loader@latest
+```
 
 ## Usage
 
@@ -30,14 +30,18 @@ When using with `stylus-loader`, make sure they are in correct order
 module.exports = {
   // ...
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.styl$/, 
-        loader: 'stylint'
+        loader: 'stylint-loader'
       },
       {
         test: /\.styl$/,
-        loader: 'style!css!stylus'
+        use: [
+          'style-loader',
+          'css-loader',
+          'stylus-loader'
+        ]
       }
     ]
   }
@@ -51,10 +55,11 @@ To be safe, you can use `preLoaders` section to check source files, not modified
 module.exports = {
   // ...
   module: {
-    preLoaders: [
+    rules: [
       {
+        enforce: 'pre',
         test: /\.styl$/, 
-        loader: 'stylint'
+        loader: 'stylint-loader'
       }
     ]
   }
@@ -72,12 +77,12 @@ You can pass [stylint options](https://github.com/rossPatton/stylint#options) di
 ```js
 {
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.js$/,
         loader: 'stylint-loader?{brackets: "never"}',
         exclude: /node_modules/,
-      },
+      }
     ],
   },
 }
@@ -86,11 +91,15 @@ You can pass [stylint options](https://github.com/rossPatton/stylint#options) di
 - Adding an `stylint` entry in your webpack config for global options:
 
 ```js
-module.exports = {
-  stylint: {
-    config: 'path/.stylintrc'
-  }
-}
+plugins: [
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      stylint: {
+        config: 'path/.stylintrc'
+      }
+    }
+  })
+]
 ```
 
 **Note that you can use both method in order to benefit from global & specific options**
