@@ -5,13 +5,19 @@ var webpack = require('webpack');
 var assign = require('object-assign');
 var globalConf = require('./utils/conf');
 
-describe('stylint loader', function() {
+describe('stylint loader: WARNING tests', function() {
   it('should return warning if file contains stylint warning based on given .stylintrc', function(done) {
     var localConfig = {
       entry: './test/fixtures/warning.js',
-      stylint: {
-        config: './test/config/.stylintrc_warning'
-      }
+      plugins: [
+        new webpack.LoaderOptionsPlugin({
+          options: {
+            stylint: {
+              config: './test/config/.stylintrc_warning'
+            }
+          }
+        })
+      ]
     };
 
     webpack(assign({}, globalConf, localConfig), function(err, stats) {
@@ -25,10 +31,11 @@ describe('stylint loader', function() {
     var localConfig = {
       entry: './test/fixtures/warning.js',
       module: {
-        preLoaders: [
+        rules: [
           {
+            enforce: 'pre',
             test: /\.styl$/,
-            loader: '../../index?{ semicolons: "never" }',
+            loader: './index?{ semicolons: "never" }',
             exclude: /node_modules/
           }
         ]

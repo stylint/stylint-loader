@@ -29,19 +29,21 @@
     "test": "npm run lint && mocha"
   },
   "peerDependencies": {
-    "stylint": "^1.2.2"
+    "stylint": "^1.5.9"
   },
   "dependencies": {
-    "loader-utils": "^0.2.11",
-    "object-assign": "^3.0.0"
+    "loader-utils": "^1.1.0",
+    "object-assign": "^4.0.1"
   },
   "devDependencies": {
     "chai": "^3.2.0",
-    "css-loader": "^0.15.6",
+    "css-loader": "^0.28.7",
     "eslint": "^1.0.0",
     "mocha": "^2.2.5",
-    "style-loader": "^0.12.3",
-    "stylus-loader": "^1.2.1",
-    "webpack": "^1.11.0"
+    "style-loader": "^0.19.0",
+    "stylint": "^1.5.9",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "webpack": "^3.8.1"
   }
 }

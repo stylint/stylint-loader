@@ -1,22 +1,29 @@
 'use strict';
 
+var path = require('path');
+var basePath = process.cwd();
+
 module.exports = {
+  context: basePath,
   output: {
-    path: './test/output/',
+    path: path.join(basePath, 'test/output/'),
     filename: 'bundle.js'
   },
   module: {
-    preLoaders: [
+    rules: [
       {
+        enforce: 'pre',
         test: /\.styl$/,
-        loader: '../../index',
+        loader: './index',
         exclude: /node_modules/
-      }
-    ],
-    loaders: [
+      },
       {
         test: /\.styl$/,
-        loader: 'style!css!stylus',
+        use: [
+          'style-loader',
+          'css-loader',
+          'stylus-loader'
+        ],
         exclude: /node_modules/
       }
     ]
